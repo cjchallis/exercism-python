@@ -1,1 +1,1 @@
-other test
+# testing git functionality on phone
