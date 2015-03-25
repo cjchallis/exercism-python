@@ -1,8 +1,8 @@
 def verse(n):
-	return number(n) + bottles(n) + ' of beer on the wall, ' + \
-               number(n).lower() + bottles(n) + ' of beer.\n' + \
-               pass_around(n) + number(n-1).lower() + \
-               bottles(n-1) + ' of beer on the wall.\n'
+	return (number(n) + bottles(n) + ' of beer on the wall, ' +
+                number(n).lower() + bottles(n) + ' of beer.\n' +
+                pass_around(n) + number(n-1).lower() +
+                bottles(n-1) + ' of beer on the wall.\n')
 	
 def song(n, m = 0):
 	song = ''
