@@ -1,5 +1,5 @@
-def parse_binary(bin):
-	if bin.strip('01'):
-		raise ValueError('Input not binary')
-	n = len(bin)
-	return sum([1<<(n-i-1) for i in range(n) if bin[i] == '1'])
+def parse_binary(bits):
+	if bits.strip('01'):
+		raise ValueError('Input not binary.')
+	return sum(1 << i for i,b in enumerate(reversed(bits))
+	            if b == '1')
