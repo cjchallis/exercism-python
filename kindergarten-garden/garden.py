@@ -1,4 +1,3 @@
-
 class Garden:
     def __init__(self, rows, students = None):
         self.rows = rows.split()

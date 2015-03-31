@@ -11,15 +11,12 @@ def handshake(n):
         return []
     except TypeError:
         pass
-#    try:
     if not 0 < n < MAX:
         return []
     shake = [actions[a] for a in sorted(actions) if a & n]
     if REV & n:
         shake.reverse()
     return shake
-    #except (TypeError, ValueError):
-     #   return []
     
 def code(shake):
     try:
