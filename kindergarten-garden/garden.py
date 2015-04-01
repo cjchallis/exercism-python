@@ -5,10 +5,10 @@ class Garden:
                         Bob Charlie David Eve Fred Ginny Harriet 
                         Ileana Joseph Kincaid Larry'''.split()
         self.plant = {'V' : 'Violets',
-          'C' : 'Clover',
-          'R' : 'Radishes',
-          'G' : 'Grass'
-          }
+                      'C' : 'Clover',
+                      'R' : 'Radishes',
+                      'G' : 'Grass'
+                      }
 
     def plants(self, student):
         i = self.students.index(student) * 2
