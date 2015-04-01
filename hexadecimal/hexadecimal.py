@@ -1,18 +1,13 @@
-hexkey = {}
-for i in range(10):
-	hexkey[str(i)] = i
-char = 'ABCDEF'
-for i,h in enumerate(char):
-	hexkey[h] = i + 10
-	hexkey[h.lower()] = i + 10
+hexkey = dict(zip('0123456789ABCDEF', range(16)))
 
 def hexa(hexes):
-	dec = 0
-	try:
-		for h in hexes:
-			dec *= 16
-			dec += hexkey[h]
-		return dec
-	except KeyError:
-		raise ValueError('Not a valid hex string.')
+    dec = 0
+    for h in hexes:
+        dec *= 16
+        try:        
+            dec += hexkey[h.upper()]
+        except KeyError:
+            raise ValueError('Not a valid hex string.')    
+    return dec
+    
 
