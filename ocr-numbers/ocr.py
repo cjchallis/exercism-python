@@ -1,43 +1,29 @@
+ROW = 4
+COL = 3
+
 all = ['    _  _     _  _  _  _  _  _ ',
        '  | _| _||_||_ |_   ||_||_|| |',
        '  ||_  _|  | _||_|  ||_| _||_|', 
        '                              ']
 
-dic = {' ':'0', '_':'1', '|':'2'}
+ocr_list = [[all[i][COL*j:COL*(j+1)] for i in range(ROW)] for j in range(10)]
 
-num_hash = [''] * 10
-for i in range(10):
-	for j in range(3*i,3*i+3):
-		for k in range(4):
-			num_hash[i] += dic[all[k][j]]
-	num_hash[i] = int(num_hash[i], 3)
-	
-num_hash = [num_hash[-1]] + num_hash[:-1]
+ocr_list = [ocr_list[-1]] + ocr_list[:9]
 
-
-
-ROW = 4
-COL = 3
 
 def number(ocr):
-	return grid(ocr)
+	if len(ocr) != ROW or len(ocr[0])%COL or any(len(r) != len(ocr[0]) for r in ocr):
+		raise ValueError('Wrong grid size.')
+	try:
+		return str(ocr_list.index(ocr))
+	except ValueError:
+		return '?'
 	
-def grid(ocr):
-	if len(ocr) != ROW or any(len(r) % COL for r in ocr):
-		raise ValueError('Error in grid size.')
-	nums = ''
-	for i in range(len(ocr)/COL):
-		hash = ''
-		for j in range(COL*i, COL*(i+1)):
-			for k in range(ROW):
-				try:
-					hash += dic[ocr[k][j]]
-				except KeyError:
-					hash += '?'
-		try:
-			nums += str(num_hash.index(int(hash, 3)))
-		except ValueError:
-			nums += '?'
-		return nums
+def grid(n):
+	try:
+		return ocr_list[int(n)]
+	except ValueError:
+		return '?'
+		
 		
 			
