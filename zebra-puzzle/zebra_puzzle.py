@@ -27,16 +27,9 @@ neighbor = [('Chesterfields', 'fox'),
            ]
 
 offset = [('green', 'ivory', 1)]
-solutions = []
+
 def brute():
-    i = 0
     for p0 in permutations(pieces['colors']):
-        print(i)
-        i += 1
-        if i < 60:
-            continue
-        print("Solutions found so far:")
-        print(solutions)
         for p1 in permutations(pieces['nations']):
             if p1.index('Norwegian') != 0:
                 continue
@@ -63,8 +56,6 @@ def check(lists):
                 s0 = l.index(s[0])
             elif s[1] in l:
                 s1 = l.index(s[1])
-        if s0 == -1 or s1 == -1:
-            print('Error with ' + str(s))
         if s0 != s1:
             return False
     for n in neighbor:
@@ -75,8 +66,6 @@ def check(lists):
                 n0 = l.index(n[0])
             elif n[1] in l:
                 n1 = l.index(n[1])
-        if n0 == -1 or n1 == -1:
-            print('Error with ' + str(n))
         if abs(n1 - n0) != 1:
             return False
     for o in offset:
@@ -87,8 +76,6 @@ def check(lists):
                 o0 = l.index(o[0])
             if o[1] in l:
                 o1 = l.index(o[1])
-        if o0 == -1 or o1 == -1:
-            print('Error with ' + str(o))
         if o0 - o1 != o[2]:
             return False
     return True
@@ -100,7 +87,5 @@ def solution():
     zebra_index = sol[4].index('zebra')
     water_drinker = sol[1][water_index]
     zebra_owner = sol[1][zebra_index]
-    print(water_drinker)
-    print(zebra_owner)
     return ("It is the %s who drinks the water.\n"
            "The %s keeps the zebra." %(water_drinker, zebra_owner))
