@@ -11,18 +11,13 @@ def song(n, m = 0):
 	return song 
 	
 def number(n):
-	if n == 0:
-		return 'No more'
-	return str(n % 100)
+	return 'No more' if n == 0 else str(n % 100)
 	
 def bottles(n):
-	if n == 1:
-		return ' bottle'
-	return ' bottles'
+	return ' bottle' if n == 1 else ' bottles'
 	
 def pass_around(n):
 	if n == 0:
 		return 'Go to the store and buy some more, '
 	one = 'it' if n == 1 else 'one'
-	return 'Take ' + one + ' down and pass it around, '
-
+	return 'Take %s down and pass it around, ' % one
