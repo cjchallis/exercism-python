@@ -11,22 +11,23 @@ stuff = ['a shorter song',
          'ten Lords-a-Leaping',
          'eleven Pipers Piping',
          'twelve Drummers Drumming'
-]
+        ]
 
 ordinals = ['zeroth', 'first', 'second', 'third',
-             'fourth', 'fifth', 'sixth', 
-             'seventh', 'eighth', 'ninth',
-              'tenth', 'eleventh', 'twelfth']
+            'fourth', 'fifth', 'sixth', 
+            'seventh', 'eighth', 'ninth',
+            'tenth', 'eleventh', 'twelfth'
+           ]
 
 def verse(n):
-	pre = 'On the ' + ordinals[n] + ' day of Christmas my true love gave to me'
-	verse =  ', '.join([pre]+stuff[n:0:-1]) + '.\n'
-	if n == 1:
-		verse = verse.replace(' and', '')
-	return verse
+    pre = 'On the %s day of Christmas my true love gave to me' % ordinals[n]
+    verse =  ', '.join([pre]+stuff[n:0:-1]) + '.\n'
+    if n == 1:
+        verse = verse.replace(' and', '')
+    return verse
 	
 def verses(a,b):
-	return '\n'.join([verse(i) for i in range(a,b+1)]) + '\n'
+    return '\n'.join([verse(i) for i in range(a,b+1)]) + '\n'
 	
 def sing():
-	return verses(1,12)
+    return verses(1,12)
