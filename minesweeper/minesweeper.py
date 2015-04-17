@@ -22,8 +22,6 @@ def board_error(m, h, w):
 def convert_to_list(mines, h, w):
      for i in range(h):
         mines[i] = list(mines[i])
-        if len(mines[i]) != w:
-            raise ValueError('Board not rectangular.')
             
 def calc_neighborhoods(mines, h, w):
     nums = []
