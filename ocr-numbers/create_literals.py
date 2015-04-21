@@ -40,3 +40,11 @@ def grid(digits):
         for r in range(ROW):
             ocr[r] += OCR_LIST[int(d)][r]
     return ocr
+
+print(grid('0010110'))
+print(grid('3186547290'))
+print(grid('4815162342'))
+dig = grid('12345')
+dig[1] = dig[1].replace('_||', ' ||')
+print(dig)
+
