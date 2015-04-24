@@ -56,4 +56,3 @@ def print_solution(sol):
                     out += '%-17s' % v
         out += '\n'
     print out
-
