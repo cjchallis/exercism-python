@@ -17,6 +17,6 @@ class Luhn:
 
     @classmethod
     def create(cls, m):
-        return 10*m + -Luhn(10*m).checksum() % 10
+        return 10*m + (-Luhn(10*m).checksum() % 10)
 
     

@@ -1,13 +1,9 @@
 def prime_factors(n):
-    factors = []
-    if n > 1:
-        next(n, factors)
-    return factors
+    return next(n, [], 2)
 	
-def next(k, factors):
-    i = 2
-    while k % i:
-        i += 1
-    factors.append(i)
-    if k / i > 1:
-        next(k / i, factors)
+def next(k, factors, p):
+    if k <= 1:
+        return factors
+    while k % p:
+        p += 1
+    return next(k / p, factors + [p], p)
