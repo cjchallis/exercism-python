@@ -7,7 +7,7 @@ def is_triplet(trip):
 
 def primitive_triplets(b):
     if b % 4:
-        raise ValueError('To find primitive triplet, integer must be divisible by 4')
+        raise ValueError('Integer must be divisible by 4')
     triplets = []
     for n in range(1, int((b/2)**0.5)+1):
         q, r = divmod(b//2, n)
@@ -23,5 +23,5 @@ def triplets_in_range(low, high):
                               for triplet in sublist
                               if max(triplet) <= high])
     return set([tuple(i*k for k in p) for p in primitives
-               for i in range(low // min(p) + (low % min(p) != 0), 
-                              high // max(p) + 1)])
+                for i in range(low // min(p) + (low % min(p) != 0), 
+                               high // max(p) + 1)])
