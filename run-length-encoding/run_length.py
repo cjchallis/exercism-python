@@ -1,31 +1,25 @@
 import re
 
+def encode(string):
+    out = ''
+    while(string):
+        m = re.search("(.)\\1*", string).group(0)
+        if len(m) > 1:
+            out += str(len(m))
+        out += m[0]
+        string = re.sub(m, '', string, count = 1)
+    return out
 
-def decode(encoded_data):
-    # Split data into a list of pairs, e.g. '2A3B' -> [('2','A'),('3','B')]
-    char_count = re.findall(r'(\d*)(\D)', encoded_data)
-
-    # Convert list of pairs to 'AABBB'
-    return ''.join(int_with_default(count, 1) * char for (count, char) in char_count)
-
-
-def encode(data):
-    # Iterator yielding match objects.
-    # e.g. 'AAA' -> one match object, o.group() == 'AAA', o.group(1) == 'A'
-    matches = re.finditer(r'(.)\1*', data)
-
-    # Convert 'AAA' to '3A'
-    def reduce_match(m):
-        lenprefix = str(len(m.group())) if len(m.group()) > 1 else ''
-        return ''.join((lenprefix, m.group(1)))
-
-    return ''.join(reduce_match(m) for m in matches)
-
-
-def int_with_default(x=0, default=0):
-    '''Like int(), but returns the given default value instead of throwing an
-    ValueError if x is not parseable.'''
-    try:
-        return int(x)
-    except ValueError:
-        return default
+def decode(string):
+    out = ''
+    while(string):
+        m = re.search('\d*\D', string)
+        char = m.group(0)[-1]
+        num = m.group(0)[0:-1]
+        if num == '':
+            num = 1
+        else:
+            num = int(num)
+        out += num * char
+        string = re.sub(m.group(0), '', string, count = 1)
+    return out
