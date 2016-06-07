@@ -18,11 +18,9 @@ def say(n):
     i = 0
     while n > 0:
         n, r = divmod(n, 1000)
-        if r > 0:
-            out.insert(0, ORDERS[i])
-        out[0:0] = _three_digit(r)
-        if i == 0 and 0 < r < 100 and n > 0:
-            out.insert(0, 'and')
+        pos = r > 0
+        extra_and = (i == 0 and 0 < r < 100 and n > 0)
+        out = extra_and * ["and"] + _three_digit(r) + pos * [ORDERS[i]] + out
         i += 1                
     return re.sub(' +', ' ', ' '.join(out)).strip()
 
